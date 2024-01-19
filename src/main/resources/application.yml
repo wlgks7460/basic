@@ -1,0 +1,57 @@
+#application.properties? ??
+
+#server.port=8081
+#
+#spring.datasource.url=jdbc:mariadb://localhost:3306/members
+#spring.datasource.username=root
+#spring.datasource.password=1234
+
+#server :
+#  port : 8081
+
+spring :
+##  Controller와 jsp사용시에 경로와 확장자 설정
+##  기본 설정이 타임리프이므로, 타임리프 의존성 제거해야 jsp 사용가능
+#  mvc:
+#    view:
+#      prefix: webapp/WEB-INF/views/
+#      suffix: .jsp
+  #  profiles :
+#    active : dev
+  datasource :
+    driver-class-name : org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/basic
+    username: root
+    password: 1234
+  jpa :
+    database : mysql
+#    innoDB 엔진 사용 설정
+    database-platform: org.hibernate.dialect.MariaDBDialect
+#    스키마는 사전생성 필요
+    generate-ddl: true
+    hibernate:
+#       create옵션은 매번 table을 drop 후 생성
+#      update옵션은 변경사항만 alter를 적용 , 컬럼 길이 변경 x , 컬럼추가 반영 ->raw 커리문 사용
+#      validate는 실제DB와의 차이만을 check
+#      실무에서는 update 또는 validate 사용
+      ddl-auto: update
+#      jpa가 자동으로 쿼리를 실행할 때, 쿼리가 console창에 보여지도록
+    show-sql: true
+#  springboot2.4이상에서는 기본적으로 PathPatternParser를 사용하고 있는데,
+#  이는 이전버전과 다른 경로매칭 규칙을 가지고 있어, springfox와 같은 일부 라이브러리에서는 문제 발생
+#  url : localhost:8080/swagger-ui
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+mybatis:
+  mapper-locations: classpath:/mapper/**/*.xml
+
+#---
+#
+#spring :
+#  profiles :
+#    active : prod
+#  datasource :
+#    url=jdbc:mariadb://localhost:3306/members
+#    username=root
+#    password=1234wl
