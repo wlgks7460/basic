@@ -37,7 +37,7 @@ public class MemberController {
 //    장점 : final을 통해 상수로 사용가능, 다형성 구현 가능, 순환참조방지
 //    생성자가 1개 밖에 없을 때에는 Autowired 생략 가능
     private final MemberService memberService;
-    @Autowired
+    @Autowired()
     public MemberController(MemberService memberService){
         this.memberService = memberService;
     }

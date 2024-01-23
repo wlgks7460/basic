@@ -29,6 +29,7 @@ public class MemberRestController {
     }
 
     @PostMapping("members/create")
+//    @ResponseStatus(HttpStatus.CREATED) 201 상태 전달
     public String save(@RequestBody MemberRequestDto memberRequestDto) {
         memberService.save(memberRequestDto);
         return "ok";

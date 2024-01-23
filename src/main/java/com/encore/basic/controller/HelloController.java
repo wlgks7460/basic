@@ -146,5 +146,11 @@ public class HelloController {
         return "hello-jsp";
     }
 
+    public void helloBuilderTest(){
+        Hello hello = Hello.builder()
+                .name("hong").email("hong@naver.com")
+                .build();
+    }
+
 
 }
